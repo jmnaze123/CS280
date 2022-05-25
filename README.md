@@ -1,3 +1,3 @@
 # CS280
-## Program Language Concepts 
-### C++  Java  Python
+Program Language Concepts 
+C++  Java  Python
