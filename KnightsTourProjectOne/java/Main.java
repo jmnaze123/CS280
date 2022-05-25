@@ -85,7 +85,6 @@ public class Main{
             for (int col = 0; col < size; col++) {
 
                 // nice formatting   :)
-                // dont know if i'll be able to do this in c++ 
                 if(board[row][col] == 1){
                     System.out.print("\u001B[31m  0" + board[row][col] + "\u001B[0m");
                 } else if (board[row][col] <= 5){
