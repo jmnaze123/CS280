@@ -1,4 +1,4 @@
-public class NoScanner {
+public class SimpleMain {
     private static int recurCalls;
     private static int[][] board = new int[8][8];
     private static int xMoves[] = {2,1,-1,-2,-2,-1,1,2}, yMoves[] = {1,2,2,1,-1,-2,-2,-1};

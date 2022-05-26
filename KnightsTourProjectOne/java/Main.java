@@ -6,7 +6,6 @@ public class Main {
     private static int[][] board;
     private static int xMoves[] = { 2, 1, -1, -2, -2, -1, 1, 2 };
     private static int yMoves[] = { 1, 2, 2, 1, -1, -2, -2, -1 };
-    private static String formatRequest;
 
     public static void main(String[] args) {
 
@@ -35,9 +34,7 @@ public class Main {
                 System.err.println("Please rerun and enter a valid starting position.");
                 System.exit(0);
         }
-        
-        System.out.println("\nNice formatting? (Y/N) ");
-        formatRequest = sc.nextLine();
+
         sc.close();
         System.out.println();
 
@@ -45,6 +42,11 @@ public class Main {
         board = new int[size][size];
         board[x1][y1] = 1;
         solve();
+
+        String rc = String.format("%,d", recurCalls);
+
+        System.out.println("\nRecursive calls: " + rc + "\n\n");
+        System.out.println("Project One: Knight's Tour\nBy: John Mayo\n");
     }
 
 
@@ -103,43 +105,26 @@ public class Main {
 
 
     private static void printBoard() {
-        if (formatRequest.equalsIgnoreCase("y")) {
-            for (int row = 0; row < size; row++) {
-
-                for (int col = 0; col < size; col++) {
-
-                    // nice formatting   :)
-                    if(board[row][col] == 1){
-                        System.out.print("\u001B[31m  0" + board[row][col] + "\u001B[0m");
-                    } else if (board[row][col] <= 5){
-                        System.out.print("\u001B[32m  0" + board[row][col] + "\u001B[0m");
-                    } else if (board[row][col] < 10){
-                        System.out.print("  0" + board[row][col]);
-                    } else if (board[row][col] >= size*size-5 && board[row][col] != size*size){
-                        System.out.print("\u001B[33m  " + board[row][col] + "\u001B[0m");
-                    } else if (board[row][col] == size*size){
-                        System.out.print("\u001B[31m  " + board[row][col] + "\u001B[0m");
-                    } else {
-                        System.out.print("  " + board[row][col]);
-                    }
-                }
-
-                System.out.println();System.out.println();
-            }
-        } else {
-
-            for (int row = 0; row < size; row++) {
-
-                for (int col = 0; col < size; col++) {
+        for (int row = 0; row < size; row++) {
+            
+            for (int col = 0; col < size; col++) {
+                // nice formatting   :)
+                if(board[row][col] == 1){
+                    System.out.print("\u001B[31m  0" + board[row][col] + "\u001B[0m");
+                } else if (board[row][col] <= 5){
+                    System.out.print("\u001B[32m  0" + board[row][col] + "\u001B[0m");
+                } else if (board[row][col] < 10){
+                    System.out.print("  0" + board[row][col]);
+                } else if (board[row][col] >= size*size-5 && board[row][col] != size*size){
+                    System.out.print("\u001B[33m  " + board[row][col] + "\u001B[0m");
+                } else if (board[row][col] == size*size){
+                    System.out.print("\u001B[31m  " + board[row][col] + "\u001B[0m");
+                } else {
                     System.out.print("  " + board[row][col]);
                 }
-                System.out.println();
             }
+
+            System.out.println();System.out.println();
         }
-
-        String rc = String.format("%,d", recurCalls);
-
-        System.out.println("\nRecursive calls: " + rc + "\n\n");
-        System.out.println("Project One: Knight's Tour\nBy: John Mayo\n");
     }
 }
