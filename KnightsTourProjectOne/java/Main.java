@@ -1,8 +1,11 @@
+import java.util.Scanner;
+
 public class Main{
 
 
     private static int size = 8;
     private static int[][] board = new int[size][size];
+    private static String ans;
 
 
     public static boolean solve() {
@@ -80,34 +83,51 @@ public class Main{
 
     private static void printBoard() {
 
-        for (int row = 0; row < size; row++) {
+        if (ans.equalsIgnoreCase("y")) {
 
-            for (int col = 0; col < size; col++) {
+            for (int row = 0; row < size; row++) {
 
-                // nice formatting   :)
-                if(board[row][col] == 1){
-                    System.out.print("\u001B[31m  0" + board[row][col] + "\u001B[0m");
-                } else if (board[row][col] <= 5){
-                    System.out.print("\u001B[32m  0" + board[row][col] + "\u001B[0m");
-                } else if (board[row][col] < 10){
-                    System.out.print("  0" + board[row][col]);
-                } else if (board[row][col] >= 59 && board[row][col] != 64){
-                    System.out.print("\u001B[33m  " + board[row][col] + "\u001B[0m");
-                } else if (board[row][col] == 64){
-                    System.out.print("\u001B[31m  " + board[row][col] + "\u001B[0m");
-                } else {
+                for (int col = 0; col < size; col++) {
+
+                    // nice formatting   :)
+                    if(board[row][col] == 1){
+                        System.out.print("\u001B[31m  0" + board[row][col] + "\u001B[0m");
+                    } else if (board[row][col] <= 5){
+                        System.out.print("\u001B[32m  0" + board[row][col] + "\u001B[0m");
+                    } else if (board[row][col] < 10){
+                        System.out.print("  0" + board[row][col]);
+                    } else if (board[row][col] >= 59 && board[row][col] != 64){
+                        System.out.print("\u001B[33m  " + board[row][col] + "\u001B[0m");
+                    } else if (board[row][col] == 64){
+                        System.out.print("\u001B[31m  " + board[row][col] + "\u001B[0m");
+                    } else {
+                        System.out.print("  " + board[row][col]);
+                    }
+                }
+
+                System.out.println();System.out.println();
+            }
+
+        } else {
+
+            for (int row = 0; row < size; row++) {
+
+                for (int col = 0; col < size; col++) {
+
                     System.out.print("  " + board[row][col]);
                 }
 
-                // if formatting is bad comment the IF statement above and uncomment the line below
-                // System.out.print("  " + board[row][col]);
-
+                System.out.println();
             }
-            System.out.println();System.out.println();
         }
+
     }
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nice formatting? (Y/N)");
+        ans = sc.nextLine();
         solve();
+        sc.close();
     }
 }
