@@ -8,10 +8,12 @@ public class SimpleMain {
         System.out.println(recurCalls);
     }
     private static void solve() {
-        System.out.println("Solution:");
         if(!move(0,0,1)){
             System.err.println("No solution.");
-        } else printBoard();
+        } else {
+            System.out.println("Solution:");
+            printBoard();
+        }
     }
     private static boolean move(int x, int y, int number) {
         int nextX, nextY;

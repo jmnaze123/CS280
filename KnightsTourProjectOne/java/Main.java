@@ -51,11 +51,12 @@ public class Main {
 
 
     private static void solve() {
-        System.out.println("Solution:");
         if(!move(x1,y1,1)){
 
             System.err.println("No solution.");
         } else {
+            
+            System.out.println("Solution:");
             printBoard();
         }
     }
