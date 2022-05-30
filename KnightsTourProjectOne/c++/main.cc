@@ -18,7 +18,7 @@ int main(){
         }
     }
 
-    solve(board,0,0,0);
+    move(board,0,0,0);
 
     return 0;
 }
@@ -38,7 +38,7 @@ void print(int board[][size]){
     }
 }
 
-bool solve(int board[][8],int m,int n,int last){
+bool move(int board[][8],int m,int n,int last){
 
     int i,j,mpi,npj;
     board[m][n]=++last;
@@ -58,7 +58,7 @@ bool solve(int board[][8],int m,int n,int last){
 
                     if( mpi >= 0 && mpi < size && 
                         npj >= 0 && npj < size &&
-                        board[mpi][npj] == 0 && solve(board,mpi,npj,last)){
+                        board[mpi][npj] == 0 && move(board,mpi,npj,last)){
 
                         return true;
                     }
