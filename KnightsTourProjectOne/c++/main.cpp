@@ -4,6 +4,7 @@
 using namespace std;
 #define size 8
 
+bool move(int board[][8],int m,int n,int last);
 void print(int [][size]);
 bool solve(int[][size],int,int,int);
 
