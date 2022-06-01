@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class MainWithExtraStuff {
+public class MainPlusPlus {
 
     private static int x1, y1, size, recurCalls;
     private static int[][] board;
