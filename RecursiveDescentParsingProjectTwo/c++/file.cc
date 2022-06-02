@@ -9,8 +9,8 @@ using std::ofstream;
 using std::string;
 
 int main(void){
-    ifstream fin("input.txt");
-    ofstream fout("output.txt");
+    ifstream fin("/Users/johnnymayo/Documents/GitHub/CS280/RecursiveDescentParsingProjectTwo/c++/input.txt");
+    ofstream fout("/Users/johnnymayo/Documents/GitHub/CS280/RecursiveDescentParsingProjectTwo/c++/output.txt");
     string buf;
 
     while (fin >> buf){
