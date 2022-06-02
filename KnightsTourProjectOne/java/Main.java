@@ -1,3 +1,5 @@
+package KnightsTourProjectOne.java;
+
 public class Main {
     private static int[][] board = new int[8][8];
     private static int xMoves[] = {2,1,-1,-2,-2,-1,1,2}, yMoves[] = {1,2,2,1,-1,-2,-2,-1};

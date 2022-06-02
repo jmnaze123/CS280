@@ -1,3 +1,5 @@
+package KnightsTourProjectOne.java;
+
 import java.util.Scanner;
 
 public class MainPlusPlus {
