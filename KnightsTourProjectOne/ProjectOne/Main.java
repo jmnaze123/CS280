@@ -1,4 +1,4 @@
-package KnightsTourProjectOne.java;
+package KnightsTourProjectOne.ProjectOne;
 
 public class Main {
     private static int[][] board = new int[8][8];

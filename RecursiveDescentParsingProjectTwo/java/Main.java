@@ -1,114 +1,183 @@
 package RecursiveDescentParsingProjectTwo.java;
 
-import java.io.File;
-import java.io.IOException;
-// import java.io.PrintWriter;
-import java.util.Scanner;
-
-//      A -> I = E
-//      E -> P O P | P
-//      O -> + | - | * | / | **
-//      P -> I | L | UI | UL | (E)
-//      U -> + | - | !
-//      I -> C | CI
-//      C -> a | b | ... | y | z
-//      L -> D | DL
-//      D -> 0 | 1 | ... | 8 | 9
+import java.io.*;
+import java.lang.String;
 
 public class Main {
-    public static void main(String[] args) {
-        // File fin = new File("/Users/johnnymayo/Documents/GitHub/CS280/RecursiveDescentParsingProjectTwo/java/input.txt"); //macos
-        File fin = new File("C:/Users/jmnaz/OneDrive/Documents/Code/GitHub/CS280/RecursiveDescentParsingProjectTwo/java/input.txt"); //Windows
-        // File fout = new File("/Users/johnnymayo/Documents/GitHub/CS280/RecursiveDescentParsingProjectTwo/java/output.txt");
+    public static String text = "";
+    public static int i;
 
-        try (//PrintWriter pw = new PrintWriter(fout);
-             Scanner sc = new Scanner(fin)){
-                while (sc.hasNext()){
-                    String next = sc.next();
-                    System.out.println(next);
-                    checkGrammar(next);
+    public static void main(String[] args) {
+
+        String fin = "/Users/johnnymayo/Documents/GitHub/CS280/RecursiveDescentParsingProjectTwo/java/input.txt";
+        // String fin = "input.txt";
+        String tempText;
+
+        try {
+            FileReader fr = new FileReader(fin);
+            BufferedReader br = new BufferedReader(fr);
+
+            while((tempText = br.readLine()) != null) {
+                text = tempText;
+                i = 0;
+
+                if(A ()) {
+                    System.out.println(text + "\u001B[32m is in the language.\u001B[37m	");
+                } else if (!text.equals("")){
+                    System.out.println(text + "\u001B[31m is not in the language.\u001B[37m	");
                 }
-        } 
-        catch (IOException e) {
+            }
+            br.close();
+        }
+
+        catch(IOException e) {
             System.err.println("\u001B[31m" + e);
         }
     }
 
-    public static void checkGrammar(String text){
-        int valid = 0;
+    private static boolean A() {
 
-        for (int i = 0; i < text.length(); i++) {
-            char temp = text.charAt(i);
-            if (A(temp)) {
-                valid = 1;
+        if (I()) {
+            if(i<text.length() && (text.charAt(i) == '=')) {
+                ++i;
+                if(E ()) {
+                    return true;
+                }
+            }
+        } else if(E()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private static boolean E() {
+
+        if (P()) {
+            if (O ()) {
+                if (P()) {
+                    return true;
+                }
             } else {
-                valid = 0;
-                break;
+                return true;
+            }
+        }
+        
+        return false;
+
+    }
+
+    private static boolean O() {
+
+        if(i<text.length() && (text.charAt(i) == '+')) {
+            ++i;
+            return true;
+
+        } else if(i<text.length() && (text.charAt(i) == '-')) {
+            ++i;
+            return true;
+
+        } else if(i<text.length() && (text.charAt(i) == '/')) {
+            ++i;
+            return true;
+
+        } else if(i<text.length() && (text.charAt(i) == '*')) {
+            ++i;
+            if(i<text.length() && (text.charAt(i) == '*')) {
+                ++i;
+                return true;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private static boolean P(){
+
+        if(I()){
+            return true;
+
+        }else if(L()){
+            return true;
+
+        }else if(U() && I()){
+            return true;
+
+        }else if(U() && L()){
+            return true;
+
+        }else if(i<text.length() && (text.charAt(i) == '(')){
+            ++i;
+            
+            if(E()){
+                if(i<text.length() && (text.charAt(i) == ')')){
+                    ++i;
+                    return true;
+                }
             }
         }
 
-        if (valid == 1) {
-            System.out.println("\u001B[32m is in the language.\u001B[37m	");
-        } else {
-            System.out.println("\u001B[31m is not in the language.\u001B[37m	");
-        }
-    }
-
-    public static boolean A(char text){
-        return P(text);
-    }
-    public static boolean E(char text){
-
         return false;
-    }
-    public static boolean EP(String text){
-        
-        return false;
-    }
-    public static boolean O(char text){
 
-        return false;
     }
-    public static boolean P(char text){
-        return I(text) || L(text) || (I(text) && U(text)) || (L(text) && U(text));
-    }
-    public static boolean U(char text){
 
-        if (text == '+' || text == '-' || text == '!') {
+    private static boolean U(){
+
+        if(i<text.length() && (text.charAt(i) == '+' || text.charAt(i) == '-' || text.charAt(i) == '!')) {
+            ++i;
             return true;
         }
 
         return false;
-    }
-    public static boolean I(char text){
 
-        if (C(text)) {
-            return true;
-        } else if (C(text)&&I(text)) {
-            return true;
-        }
-
-        return false;
     }
-    public static boolean C(char text){
-        if ('a' <= text && text <= 'z') {
+
+    private static boolean I(){
+
+        if(C()) {
+            return true;
+
+        } else if(C() && I()) {
             return true;
         }
 
         return false;
+
     }
-    public static boolean L(char text){
-        if (D(text)) {
-            return true;
-        } else if (D(text)&&L(text)) {
-            return true;
-        }
-        return false;
-    }
-    public static boolean D(char text){
-        if ('0' <= text && text <= '9') {
+
+    private static boolean C(){
+
+        if(i<text.length() && (text.charAt(i) >= 'a' && text.charAt(i) <= 'z')) {
+            ++i;
             return true;
         }
+
+        return false;
+
+    }
+
+    private static boolean L (){
+
+        if(D()) {
+            return true;
+
+        } else if(D() && L()) {
+            return true;
+        }
+
         return false;
     }
+
+    private static boolean D(){
+
+        if(i<text.length() && (text.charAt(i) >= '0' && text.charAt(i) <= '9')) {
+            ++i;
+            return true;
+        }
+
+        return false;
+    }
+
 }

@@ -1,4 +1,4 @@
-package KnightsTourProjectOne.java;
+package KnightsTourProjectOne.ProjectOne;
 
 import java.util.Scanner;
 
