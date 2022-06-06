@@ -17,7 +17,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        File fin = new File("/Users/johnnymayo/Documents/GitHub/CS280/RecursiveDescentParsingProjectTwo/java/input.txt");
+        // File fin = new File("/Users/johnnymayo/Documents/GitHub/CS280/RecursiveDescentParsingProjectTwo/java/input.txt"); //macos
+        File fin = new File("C:/Users/jmnaz/OneDrive/Documents/Code/GitHub/CS280/RecursiveDescentParsingProjectTwo/java/input.txt"); //Windows
         // File fout = new File("/Users/johnnymayo/Documents/GitHub/CS280/RecursiveDescentParsingProjectTwo/java/output.txt");
 
         try (//PrintWriter pw = new PrintWriter(fout);
@@ -69,9 +70,13 @@ public class Main {
         return false;
     }
     public static boolean P(char text){
-        return I(text) || L(text);
+        return I(text) || L(text) || (I(text) && U(text)) || (L(text) && U(text));
     }
     public static boolean U(char text){
+
+        if (text == '+' || text == '-' || text == '!') {
+            return true;
+        }
 
         return false;
     }
