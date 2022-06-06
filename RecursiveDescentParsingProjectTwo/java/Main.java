@@ -44,8 +44,6 @@ public class Main {
                     return true;
                 }
             }
-        } else if(E()) {
-            return true;
         }
 
         return false;

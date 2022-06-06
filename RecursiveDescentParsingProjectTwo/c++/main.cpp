@@ -20,7 +20,8 @@ int main()
 {
 
 ifstream infile; 
-infile.open("input.txt"); 
+infile.open("/Users/johnnymayo/Documents/GitHub/CS280/RecursiveDescentParsingProjectTwo/c++/input.txt");
+//  infile.open("input.txt");
 
 while(!infile.eof())
 {
@@ -28,16 +29,16 @@ i=0;
 j=0;
 infile >> data; 
 if(A()!=-1&&i==data.length())
-cout<<"The string "<<data<<" is in the language\n";
+cout<<data<<" is in the language.\n";
 else
-cout<<"The string "<<data<<" is not in the language\n";
+cout<<data<<" is not in the language.\n";
 }
 
 infile.close();
 return 0;
 }
 /*
-A -> I = E | E
+A -> I = E | E ---------FIX THIS---------
 E -> P O P | P
 O -> + | - | * | / | **
 P -> I | L | UI | UL | (E)

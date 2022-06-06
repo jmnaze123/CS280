@@ -1,1 +1,5 @@
-test 123
+a=1
+a=a+b-c*d
+a=a//b++c
+
+a=abcdefghijklmnopqrstuvwyxz**a+a-(a*a/a!(1234567890))

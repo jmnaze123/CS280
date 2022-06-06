@@ -2,4 +2,4 @@ a=1
 a=a+b-c*d
 a=a//b++c
 
-1234567890=abcdefghijklmnopqrstuvwyxz**a+a-(a*a/a!(a))
+a=abcdefghijklmnopqrstuvwyxz**a+a-(a*a/a!(1234567890))
