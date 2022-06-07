@@ -9,7 +9,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String fin = "/Users/johnnymayo/Documents/GitHub/CS280/RecursiveDescentParsingProjectTwo/java/input.txt";
+        // String fin = "/Users/johnnymayo/Documents/GitHub/CS280/RecursiveDescentParsingProjectTwo/java/input.txt"; //macos
+        String fin = "C:/Users/jmnaz/OneDrive/Documents/Code/GitHub/CS280/RecursiveDescentParsingProjectTwo/java/input.txt"; //windows
         // String fin = "input.txt";
         String tempText;
 
@@ -31,7 +32,7 @@ public class Main {
         }
 
         catch(IOException e) {
-            System.err.println("\u001B[31m" + e);
+            System.err.println("\u001B[31m" + e + "\u001B[37m");
         }
     }
 
