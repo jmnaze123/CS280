@@ -9,8 +9,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // String fin = "/Users/johnnymayo/Documents/GitHub/CS280/RecursiveDescentParsingProjectTwo/java/input.txt"; //macos
-        String fin = "C:/Users/jmnaz/OneDrive/Documents/Code/GitHub/CS280/RecursiveDescentParsingProjectTwo/java/input.txt"; //windows
+        String fin = "/Users/johnnymayo/Documents/GitHub/CS280/RecursiveDescentParsingProjectTwo/java/input.txt"; //macos
+        // String fin = "C:/Users/jmnaz/OneDrive/Documents/Code/GitHub/CS280/RecursiveDescentParsingProjectTwo/java/input.txt"; //windows
         // String fin = "input.txt";
         String tempText;
 
@@ -63,7 +63,6 @@ public class Main {
         }
         
         return false;
-
     }
 
     private static boolean O() {
@@ -119,7 +118,6 @@ public class Main {
         }
 
         return false;
-
     }
 
     private static boolean U(){
