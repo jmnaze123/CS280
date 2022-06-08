@@ -23,9 +23,18 @@ public class Main {
                 i = 0;
 
                 if(A ()) {
-                    System.out.println(text + "\u001B[32m is in the language.\u001B[37m	");
+                    if (text.charAt(0) == 'a') {
+                        System.out.println("\u001B[32m" + text + "\u001B[32m is in the language.\u001B[37m	");    
+                    } else {
+                        System.out.println("\u001B[31m" + text + "\u001B[32m is in the language.\u001B[37m	");    
+                    }
+                    
                 } else if (!text.equals("")){
-                    System.out.println(text + "\u001B[31m is not in the language.\u001B[37m	");
+                    if (text.charAt(0) == 'a') {
+                        System.out.println("\u001B[32m" + text + "\u001B[31m is NOT in the language.\u001B[37m	");    
+                    } else{
+                        System.out.println("\u001B[31m" + text + "\u001B[31m is NOT in the language.\u001B[37m	");    
+                    }            
                 }
             }
             br.close();
