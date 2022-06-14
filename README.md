@@ -1,7 +1,7 @@
 # CS280 💻
 Program Language Concepts 
 
-C++ 🗑  
+C++ , C 🗑  
 
 Java ☕️  
 
