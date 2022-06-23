@@ -21,6 +21,17 @@ public class Main {
     }
 }
 
+class Complex {
+    
+        private Rational real;
+        private Rational imag;
+    
+        public Complex(Rational real, Rational imag) {
+            this.real = real;
+            this.imag = imag;
+        }
+}
+
 class Rational {
 
     public Rational() {

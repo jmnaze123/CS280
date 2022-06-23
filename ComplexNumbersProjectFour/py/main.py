@@ -4,6 +4,11 @@
 #
 #
 
+class complex:
+    def __init__(self, real, imaginary):
+        self.real = real
+        self.imaginary = imaginary
+
 class rational:
     def __init__(self, num=0, den=1):
         self.num = num

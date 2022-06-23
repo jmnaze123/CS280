@@ -4,6 +4,21 @@
  *
  */
 
+#ifndef COMPLEX_H
+#Define COMPLEX_H
+
+#include <iostream>
+
+using std::ostream;
+
+#endif /* COMPLEX_H */
+
+/* complex.cc */
+
+#include <iostream>
+
+
+
 /* rational.h */
 
 #ifndef RATIONAL_H
