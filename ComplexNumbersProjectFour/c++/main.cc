@@ -4,18 +4,65 @@
  *
  */
 
+
+
+/* complex.h */
+
 #ifndef COMPLEX_H
-#Define COMPLEX_H
+#define COMPLEX_H
 
 #include <iostream>
 
 using std::ostream;
 
+struct complex {
+
+    complex(rational = 1, rational = 1);
+
+    complex operator+(const complex &) const;
+    complex operator-(const complex &) const;
+    complex operator*(const complex &) const;
+    complex operator/(const complex &) const;
+
+    complex operator+(double) const;
+    complex operator-(double) const;
+    complex operator*(double) const;
+    complex operator/(double) const;
+
+    friend complex operator+(double, const complex &) const;
+    friend complex operator-(double, const complex &) const;
+    friend complex operator*(double, const complex &) const;
+    friend complex operator/(double, const complex &) const;
+
+    friend ostream &operator<<(ostream &, const complex &);
+
+private: 
+    rational real;
+    rational imag;
+};
+}
+
 #endif /* COMPLEX_H */
+
 
 /* complex.cc */
 
 #include <iostream>
+
+complex::complex(rational r, rational i) : real(r), imag(i) {}
+
+complex complex::operator+(const complex &c) const {
+    return complex(real + c.real, imag + c.imag);
+}
+
+complex complex::operator-(const complex &c) const {
+    return complex(real - c.real, imag - c.imag);
+}
+
+
+
+
+
 
 
 
@@ -130,6 +177,10 @@ ostream &operator<<(ostream &out, const rational &o) {
     return out;
 }
 
+
+
+
+
 /* main.cc */
 
 #include <iostream>
@@ -138,6 +189,8 @@ using std::cout;
 using std::endl;
 
 int main(void) {
+
+    cout << "Rational numbers tests:" << endl;
 
     rational a(1, 2);
     rational b(1, 3);
@@ -158,6 +211,17 @@ int main(void) {
     cout << i << " - " << a << " = " << i - a << endl;
     cout << i << " * " << a << " = " << i * a << endl;
     cout << i << " / " << a << " = " << i / a << endl;
+
+
+    cout << "Complex numbers tests:" << endl;
+
+    complex y(0, 1);
+    complex z(3, 2);
+
+    double d = 5.99;
+
+    cout << y << " + " << z << " = " << y + z << endl;
+    cout << y << " - " << z << " = " << y - z << endl;
 
     return 0;
 }
