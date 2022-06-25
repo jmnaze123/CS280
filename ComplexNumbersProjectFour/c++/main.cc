@@ -17,26 +17,27 @@ using std::ostream;
 
 struct complex {
 
-    complex(rational = 1, rational = 1);
+    complex(rational = 0, rational = 1);
 
     complex operator+(const complex &) const;
     complex operator-(const complex &) const;
     complex operator*(const complex &) const;
     complex operator/(const complex &) const;
 
-    complex operator+(double) const;
-    complex operator-(double) const;
-    complex operator*(double) const;
-    complex operator/(double) const;
+    complex operator+(int) const;
+    complex operator-(int) const;
+    complex operator*(int) const;
+    complex operator/(int) const;
 
-    friend complex operator+(double, const complex &) const;
-    friend complex operator-(double, const complex &) const;
-    friend complex operator*(double, const complex &) const;
-    friend complex operator/(double, const complex &) const;
+    friend complex operator+(int, const complex &);
+    friend complex operator-(int, const complex &);
+    friend complex operator*(int, const complex &);
+    friend complex operator/(int, const complex &);
 
     friend ostream &operator<<(ostream &, const complex &);
 
-private: 
+private:
+
     rational real;
     rational imag;
 };
