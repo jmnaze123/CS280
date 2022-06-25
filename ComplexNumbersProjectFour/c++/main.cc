@@ -24,15 +24,15 @@ struct complex {
     complex operator*(const complex &) const;
     complex operator/(const complex &) const;
 
-    complex operator+(int) const;
-    complex operator-(int) const;
-    complex operator*(int) const;
-    complex operator/(int) const;
+    complex operator+(double) const;
+    complex operator-(double) const;
+    complex operator*(double) const;
+    complex operator/(double) const;
 
-    friend complex operator+(int, const complex &);
-    friend complex operator-(int, const complex &);
-    friend complex operator*(int, const complex &);
-    friend complex operator/(int, const complex &);
+    friend complex operator+(double, const complex &);
+    friend complex operator-(double, const complex &);
+    friend complex operator*(double, const complex &);
+    friend complex operator/(double, const complex &);
 
     friend ostream &operator<<(ostream &, const complex &);
 
@@ -41,7 +41,6 @@ private:
     rational real;
     rational imag;
 };
-}
 
 #endif /* COMPLEX_H */
 
