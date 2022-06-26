@@ -5,19 +5,17 @@
  */
 
 
-
 /* complex.h */
-
-#ifndef COMPLEX_H
-#define COMPLEX_H
 
 #include <iostream>
 
+using std::cout;
+using std::endl;
 using std::ostream;
 
 struct complex {
 
-    complex(rational = 0, rational = 1);
+    complex(double = 0, double = 0);
 
     complex operator+(const complex &) const;
     complex operator-(const complex &) const;
@@ -38,190 +36,109 @@ struct complex {
 
 private:
 
-    rational real;
-    rational imag;
+    double real;
+    double imag;
 };
-
-#endif /* COMPLEX_H */
 
 
 /* complex.cc */
 
-#include <iostream>
+complex::complex(double real, double imag) : real(real), imag(imag) {}
 
-complex::complex(rational r, rational i) : real(r), imag(i) {}
+complex complex::operator+(const complex &o) const {
 
-complex complex::operator+(const complex &c) const {
-    return complex(real + c.real, imag + c.imag);
+    return complex(real + o.real, imag + o.imag);
 }
 
-complex complex::operator-(const complex &c) const {
-    return complex(real - c.real, imag - c.imag);
+complex complex::operator+(double d) const {
+
+    return complex(real + d, imag);
 }
 
+complex complex::operator-(const complex &o) const {
 
-
-
-
-
-
-
-/* rational.h */
-
-#ifndef RATIONAL_H
-#define RATIONAL_H
-
-#include <iostream>
-
-using std::ostream;
-
-struct rational {
-
-    rational(int = 0, int = 1);
-
-    rational operator+(const rational &) const;
-    rational operator-(const rational &) const;
-    rational operator*(const rational &) const;
-    rational operator/(const rational &) const;
-
-    rational operator+(int) const;
-    rational operator-(int) const;
-    rational operator*(int) const;
-    rational operator/(int) const;
-
-    friend rational operator+(int, const rational &);
-    friend rational operator-(int, const rational &);
-    friend rational operator*(int, const rational &);
-    friend rational operator/(int, const rational &);
-
-    friend ostream &operator<<(ostream &, const rational &);
-
-private:
-
-    int den;
-    int num;
-};
-
-#endif /* RATIONAL_H */
-
-/* rational.cc */
-
-#include <iostream>
-
-
-rational::rational(int num, int den) : num(num), den(den) {}
-
-rational rational::operator+(const rational &o) const {
-
-    return rational(num * o.den + o.num * den, den * o.den);
+    return complex(real - o.real, imag - o.imag);
 }
 
-rational rational::operator+(int n) const {
+complex complex::operator-(double d) const {
 
-    return rational(num + n * den, den);
+    return complex(real - d, imag);
 }
 
-rational rational::operator-(const rational &o) const {
+complex complex::operator*(const complex &o) const {
 
-    return rational(num * o.den - o.num * den, den * o.den);
+    return complex(real * o.real - imag * o.imag, real * o.imag + imag * o.real);
 }
 
-rational rational::operator-(int n) const {
+complex complex::operator*(double d) const {
 
-    return rational(num - n * den, den);
+    return complex(real * d, imag * d);
 }
 
-rational rational::operator*(const rational &o) const {
+complex complex::operator/(const complex &o) const {
 
-    return rational(num * o.num, den * o.den);
+    return complex((real * o.real + imag * o.imag) / (o.real * o.real + o.imag * o.imag), (imag * o.real - real * o.imag) / (o.real * o.real + o.imag * o.imag));
 }
 
-rational rational::operator*(int n) const {
+complex complex::operator/(double d) const {
 
-    return rational(num * n, den);
+    return complex(real / d, imag / d);
 }
 
-rational rational::operator/(const rational &o) const {
+complex operator+(double d, const complex &o) {
 
-    return rational(num * o.den, den * o.num);
+    return complex(d + o.real, o.imag);
 }
 
-rational rational::operator/(int n) const {
+complex operator-(double d, const complex &o) {
 
-    return rational(num, den * n);
+    return complex(d - o.real, -o.imag);
 }
 
-rational operator+(int n, const rational &o) {
+complex operator*(double d, const complex &o) {
 
-    return o + n;
+    return complex(d * o.real, d * o.imag);
 }
 
-rational operator-(int n, const rational &o) {
+complex operator/(double d, const complex &o) {
 
-    return rational(n) - o;
+    return complex(d / (o.real * o.real + o.imag * o.imag), -d * o.imag / (o.real * o.real + o.imag * o.imag));
 }
 
-rational operator*(int n, const rational &o) {
+ostream &operator<<(ostream &out, const complex &o) {
 
-    return o * n;
-}
-
-rational operator/(int n, const rational &o) {
-
-    return rational(n) / o;
-}
-
-ostream &operator<<(ostream &out, const rational &o) {
-
-    out << '(' << o.num << " / " << o.den << ')';
+    out << o.real;
+    if (o.imag < 0)
+        out << " - " << -o.imag << "i";
+    else if (o.imag > 0)
+        out << " + " << o.imag << "i";
     return out;
 }
 
 
-
-
-
 /* main.cc */
-
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 int main(void) {
 
-    cout << "Rational numbers tests:" << endl;
+    complex a(1.0, 2.0);
+    complex b(1.0, 3.0);
 
-    rational a(1, 2);
-    rational b(1, 3);
-
-    int i = 5;
+    double d = 5.0;
 
     cout << a << " + " << b << " = " << a + b << endl;
     cout << a << " - " << b << " = " << a - b << endl;
     cout << a << " * " << b << " = " << a * b << endl;
     cout << a << " / " << b << " = " << a / b << endl;
 
-    cout << a << " + " << i << " = " << a + i << endl;
-    cout << a << " - " << i << " = " << a - i << endl;
-    cout << a << " * " << i << " = " << a * i << endl;
-    cout << a << " / " << i << " = " << a / i << endl;
+    cout << a << " + " << d << " = " << a + d << endl;
+    cout << a << " - " << d << " = " << a - d << endl;
+    cout << a << " * " << d << " = " << a * d << endl;
+    cout << a << " / " << d << " = " << a / d << endl;
 
-    cout << i << " + " << a << " = " << i + a << endl;
-    cout << i << " - " << a << " = " << i - a << endl;
-    cout << i << " * " << a << " = " << i * a << endl;
-    cout << i << " / " << a << " = " << i / a << endl;
-
-
-    cout << "Complex numbers tests:" << endl;
-
-    complex y(0, 1);
-    complex z(3, 2);
-
-    double d = 5.99;
-
-    cout << y << " + " << z << " = " << y + z << endl;
-    cout << y << " - " << z << " = " << y - z << endl;
+    cout << d << " + " << a << " = " << d + a << endl;
+    cout << d << " - " << a << " = " << d - a << endl;
+    cout << d << " * " << a << " = " << d * a << endl;
+    cout << d << " / " << a << " = " << d / a << endl;
 
     return 0;
 }
