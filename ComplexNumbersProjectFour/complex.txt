@@ -1,0 +1,23 @@
+Operator overloading in Python provides extended meaning beyond an operator's predefined operational meaning. Such as, the "+" operator for adding two integers as well as joining two strings or merging two lists. We can achieve this as the "+" operator is overloaded by the "int" class and "str" class. Using python for this project was extremely simple. Operator overloading made it very easy to incorporate our Complex class with python as it does not require any separate methods or excessive code to perform operations on Complex objects. To overload operations in python we create a definition of __add__() for addition. In our case we had two Complex objects which are a user-defined data type class. We have to add the two objects using the "+" operator, and it gives an error. This is because the compiler does not know how to add two objects. So, we have to define the function for using the operator, and that process is known as "operator overloading".
+
+In C++ we can make operators work for user-defined classes. This means C++ has the ability to provide the operators with a special meaning for a data type, this ability is known as operator overloading. For example, we can overload an operator ‘+’ in a class like String so that we can concatenate two strings by just using +. Other example classes where arithmetic operators may be overloaded are Complex Numbers, Fractional Numbers, Big Integer, etc. Operator overloading is a compile time polymorphism. It is an idea of giving special meaning to an existing operator in C++ without changing their original meaning.
+
+Java doesn't support operator overloading because it's just a choice made by its creators who wanted to keep the language more simple. Every operator has a good meaning with the arithmetic operation it performs. Operator overloading allows you to do something extra than what it is expected for.
+
+The language that I think is the best is Python. This is probably because it is my favorite language of the three. However, I am most knowledgeable with Java so if it did support operator overloading it would have to be my favorite language for this project. As far as C++ is concerned I am not a big fan of the language. Although having operator overloading did make this project easier, I did not find my time with this language in this class to be very pleasant. This is most likely because I had to learn it by myself with google, youtube, and stackoverflow. Overall, I had the least difficulty with Python because of Python’s minimal style and high functionality with operator overloading. 
+
+Pros of java :
+Java is an Object-Oriented Programming Language
+Cons of java :
+Significant memory space required
+No operator overloading
+PROS OF C++
+Object-oriented 
+Has operator overloading
+CONS OF C++: 
+Had to teach it to myself
+PROS OF PYTHON:
+Python is easy to learn and read
+Easiest operator overloading
+CONS OF PYTHON:
+None
