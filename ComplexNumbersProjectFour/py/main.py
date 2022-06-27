@@ -32,7 +32,14 @@ class complex:
         self.imaginary = imaginary
 
     def __str__(self):
-        return "({}, {}i)".format(self.real, self.imaginary)
+        if self.imaginary == 0:
+            return '%s' % self.real
+        elif self.real == 0:
+            return '%si' % self.imaginary
+        elif self.imaginary > 0:
+            return '%s + %si' % (self.real, self.imaginary)
+        else:
+            return '%s - %si' % (self.real, abs(self.imaginary))
 
     def __radd__(self, other):
         return self + other
